@@ -1,0 +1,13 @@
+from node as build
+workdir /app
+copy package*.json ./
+run npm install
+
+from gcr.io/distroless/nodejs26-debian13
+workdir /app
+copy --from=build /app/node_modules ./node.modules
+copy app.js .
+copy package.json .
+expose 8080
+cmd ["node","app.js"]
+
