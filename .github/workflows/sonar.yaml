@@ -5,7 +5,7 @@ on :
 
 jobs:
   sonarqube:
-    runs-on: self_hosted
+    runs-on: self-hosted
     steps:
       - name : chekout code
         uses: actions/checkout@v4
