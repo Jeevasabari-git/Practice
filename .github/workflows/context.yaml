@@ -9,4 +9,6 @@ jobs:
 
     steps:
       - name: context
-        run: echo "these are the contexts : ${{ github.repository }}"
+        run: |
+          echo "these are the contexts : ${{ github.repository }}"
+        
