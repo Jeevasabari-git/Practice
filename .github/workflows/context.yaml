@@ -1,0 +1,11 @@
+name : showing context
+
+on : workflow_dispatch
+
+jobs :
+  context:
+    runs-on: self-hosted
+    
+    steps: 
+      - name: context
+      run : echo "these are the contexts : " ${{github.repository}}"
