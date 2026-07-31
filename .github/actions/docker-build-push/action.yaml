@@ -1,0 +1,32 @@
+name: 'Docker Build and Push'
+description: 'Builds a Docker image and pushes it to Docker Hub'
+
+inputs:
+  image-name:
+    description: 'Docker Hub repo name, e.g. username/app-name'
+    required: true
+  tag:
+    description: 'Image tag'
+    required: false
+    default: 'latest'
+  docker-username:
+    description: 'Docker Hub username'
+    required: true
+  docker-password:
+    description: 'Docker Hub access token'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Log in to Docker Hub
+      shell: bash
+      run: echo "${{ inputs.docker-password }}" | docker login -u "${{ inputs.docker-username }}" --password-stdin
+
+    - name: Build image
+      shell: bash
+      run: docker build -t ${{ inputs.image-name }}:${{ inputs.tag }} .
+
+    - name: Push image
+      shell: bash
+      run: docker push ${{ inputs.image-name }}:${{ inputs.tag }}
