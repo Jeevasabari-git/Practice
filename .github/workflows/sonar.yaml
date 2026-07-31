@@ -1,37 +1,31 @@
 name: sonar run
-on: 
+
+on:
   pull_request:
-      branches: 
-        - main
+    branches:
+      - main
 
 jobs:
   sonarqube:
-    if: ${{ github.event_name == 'pull_request' }}
     runs-on: self-hosted
-    steps:
-      - name : chekout code
-        uses: actions/checkout@v4
+  steps:
+    - name: checkout code
+      uses: actions/checkout@v4
 
-      - name : sonar run
-        uses: SonarSource/sonarqube-scan-action@v7
-        with:
-          args: >
-            -Dsonar.projectKey=assignment-4
-            -Dsonar.sources=.
-            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+    - name: sonar run
+      uses: SonarSource/sonarqube-scan-action@v7
+      with:
+      args: >
+        -Dsonar.projectKey=assignment-4
+        -Dsonar.sources=.
+        -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}
+   env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
-  push:
-     if: ${{ github.event_name == 'push' }}
-     runs-on: self-hosted
-     environment:
-        -name:approval
 
-     steps:
-      - name: approval step
-        run: echo "Approved deployment"
+
+
 
  
           
