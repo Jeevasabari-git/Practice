@@ -8,20 +8,21 @@ on:
 jobs:
   sonarqube:
     runs-on: self-hosted
-  steps:
-    - name: checkout code
-      uses: actions/checkout@v4
 
-    - name: sonar run
-      uses: SonarSource/sonarqube-scan-action@v7
-      with:
-      args: >
-        -Dsonar.projectKey=assignment-4
-        -Dsonar.sources=.
-        -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}
-   env:
-      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: sonar run
+        uses: SonarSource/sonarqube-scan-action@v7
+        with:
+          args: >
+            -Dsonar.projectKey=assignment-4
+            -Dsonar.sources=.
+            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
 
 
