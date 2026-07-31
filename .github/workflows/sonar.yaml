@@ -6,7 +6,7 @@ on:
 
 jobs:
   sonarqube:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name : chekout code
         uses: actions/checkout@v4
@@ -17,7 +17,7 @@ jobs:
           args: >
             -Dsonar.projectKey=assignment-4
             -Dsonar.sources=.
-            -Dsonar.host.url=http://localhost:9000
+            -Dsonar.host.${{ secrets.SONAR_HOST_URL }}
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
