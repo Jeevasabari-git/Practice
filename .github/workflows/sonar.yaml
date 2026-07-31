@@ -23,10 +23,10 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
-     push:
+  push:
      if: ${{ github.event_name == 'push' }}
-    runs-on: self_hosted
-    enviornment:
+     runs-on: self-hosted
+     environment:
         -name:approval
 
  
