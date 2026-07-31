@@ -29,6 +29,10 @@ jobs:
      environment:
         -name:approval
 
+     steps:
+      - name: approval step
+        run: echo "Approved deployment"
+
  
           
    
