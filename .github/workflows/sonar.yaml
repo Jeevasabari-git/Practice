@@ -6,7 +6,7 @@ on:
 
 jobs:
   sonarqube:
-    if: github.eventname == 'pull_request'
+    if: github.event_name == 'pull_request'
     runs-on: self-hosted
     steps:
       - name : chekout code
@@ -24,7 +24,7 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
      push:
-     if : github.eventname == 'push' 
+     if : github.event_name == 'push' 
     runs-on: self_hosted
     enviornment:
         -name:approval
