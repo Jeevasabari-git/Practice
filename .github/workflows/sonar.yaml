@@ -18,7 +18,7 @@ jobs:
           args: >
             -Dsonar.projectKey=assignment-4
             -Dsonar.sources=.
-            -Dsonar.host.${{ secrets.SONAR_HOST_URL }}
+            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
