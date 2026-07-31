@@ -1,5 +1,4 @@
 name: sonar run
-
 on:
   pull_request:
     branches:
@@ -8,7 +7,6 @@ on:
 jobs:
   sonarqube:
     runs-on: self-hosted
-
     steps:
       - name: checkout code
         uses: actions/checkout@v4
